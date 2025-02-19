@@ -26,6 +26,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-192jds")
 DEBUG = os.environ.get("DEBUG", "false").lower() == "true"
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "127.0.0.1").split(",")
+ALLOWED_PORT = os.environ.get("PORT", "8811")
 
 # Application definition
 
@@ -44,7 +45,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    # "django.middleware.csrf.CsrfViewMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -138,4 +139,4 @@ if not CSRF_TRUSTED_ORIGINS or CSRF_TRUSTED_ORIGINS == [""]:
     CSRF_TRUSTED_ORIGINS = []
     for host in ALLOWED_HOSTS:
         CSRF_TRUSTED_ORIGINS.append(f"http://{host}")
-        CSRF_TRUSTED_ORIGINS.append(f"http://{host}:8000")
+        CSRF_TRUSTED_ORIGINS.append(f"http://{host}:{ALLOWED_PORT}")
