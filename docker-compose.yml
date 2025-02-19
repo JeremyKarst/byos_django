@@ -9,7 +9,7 @@ services:
       - DB_FILE=/data/db.sqlite3
       - PW_SERVER=ws://pw:3000/
     env_file:
-      - .env
+      - stack.env
     links:
       - pw
     depends_on:
