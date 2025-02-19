@@ -28,7 +28,7 @@ services:
       context: .
     container_name: nginx
     ports:
-      - "8000:80"
+      - "${PORT:-8811}:80"
     links:
       - app
     depends_on:
